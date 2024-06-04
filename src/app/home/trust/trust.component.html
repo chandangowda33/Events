@@ -1,0 +1,92 @@
+<div class="trust_container">
+  <h3 class="heading">What makes us trust worthy?</h3>
+  <h4 class="because">Because of our..</h4>
+  <div class="reason_container">
+    <div class="reason_exp">
+      <div class="reason_heading" (click)="onClick($event, 1)">
+        <h2 class="reason">7+ year experiance</h2>
+        <img
+          class="arrow"
+          src="../../../assets/down-arrow_single.svg"
+          *ngIf="!(flag === 1)"
+        />
+        <img
+          class="arrow"
+          src="../../../assets/up-arrow.svg"
+          *ngIf="flag === 1"
+        />
+      </div>
+      <div class="exp_container" *ngIf="flag === 1">
+        <img class="exp_image" src="../../../assets/exp.svg" />
+        <p class="exp">
+          With over 7 years of expertise in event management, we've proudly
+          organized more than 1000 birthdays, facilitated over 50 weddings,
+          orchestrated 100+ custom parties, and successfully executed numerous
+          other events across Bengaluru.
+        </p>
+      </div>
+      <div class="reason_heading" (click)="onClick($event, 2)">
+        <h2 class="reason">Own Warehouse and Vehicles</h2>
+        <img
+          class="arrow"
+          src="../../../assets/down-arrow_single.svg"
+          *ngIf="!(flag === 2)"
+        />
+        <img
+          class="arrow"
+          src="../../../assets/up-arrow.svg"
+          *ngIf="flag === 2"
+        />
+      </div>
+      <div class="exp_container" *ngIf="flag === 2">
+        <img class="exp_image" src="../../../assets/warehouse.svg" />
+        <p class="exp">
+          We have our own warehouse and transport vehicles, ensuring efficiency
+          and timely completion of decorations well ahead of your events. This
+          in-house capability allows us to handle logistics seamlessly and hand
+          over event place to you on time with complete decorations.
+        </p>
+      </div>
+      <div class="reason_heading" (click)="onClick($event, 3)">
+        <h2 class="reason">25+ members team</h2>
+        <img
+          class="arrow"
+          src="../../../assets/down-arrow_single.svg"
+          *ngIf="!(flag === 3)"
+        />
+        <img
+          class="arrow"
+          src="../../../assets/up-arrow.svg"
+          *ngIf="flag === 3"
+        />
+      </div>
+      <div class="exp_container" *ngIf="flag === 3">
+        <img class="exp_image" src="../../../assets/team.svg" />
+        <p class="exp">
+          Our team have 25+ members including baloon decorators, flower
+          decorators, photographers, magicians, event anchors etc..
+        </p>
+      </div>
+      <div class="reason_heading" (click)="onClick($event, 4)">
+        <h2 class="reason">On call support</h2>
+        <img
+          class="arrow"
+          src="../../../assets/down-arrow_single.svg"
+          *ngIf="!(flag === 4)"
+        />
+        <img
+          class="arrow"
+          src="../../../assets/up-arrow.svg"
+          *ngIf="flag === 4"
+        />
+      </div>
+      <div class="exp_container" *ngIf="flag === 4">
+        <img class="exp_image" src="../../../assets/support.svg" />
+        <p class="exp">
+          Our team will be available from morning 10am to night 10am for your
+          assistance and give update on your event.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

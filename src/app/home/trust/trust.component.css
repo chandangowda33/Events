@@ -1,0 +1,70 @@
+.trust_container {
+  padding: 2.4rem 0 1.2rem 1.2rem;
+}
+.heading {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 0.3rem;
+}
+
+.because {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  font-size: 2.7rem;
+  margin-bottom: 1.2rem;
+}
+
+.reason_container {
+  /* padding: 0 1.8rem; */
+  padding-left: 1.2rem;
+  display: flex;
+}
+
+.reason {
+  text-align: center;
+
+  color: #f4c6e0;
+  padding: 0.6rem;
+  margin: 0;
+}
+
+.reason_heading {
+  display: flex;
+  gap: 0.3rem;
+  background-color: #0a0029;
+  align-items: center;
+  justify-content: center;
+  /* width: 40rem; */
+}
+
+.reason_exp {
+  border: 0.1rem solid #0a0029;
+  width: 95%;
+}
+
+.exp_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: #c9b8fc;
+  padding: 0.6rem 0.3rem;
+}
+
+.arrow {
+  height: 1.8rem;
+  width: 1.8rem;
+}
+
+.exp_image {
+  width: 9rem;
+  height: 9rem;
+}
+
+.exp {
+  font-size: 1.2rem;
+  padding-top: 0.6rem;
+  text-align: center;
+}

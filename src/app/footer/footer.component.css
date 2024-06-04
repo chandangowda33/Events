@@ -1,0 +1,40 @@
+.footer_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 2.4rem 2.4rem 0 2.4rem;
+  background-color: #0a0029;
+  color: #f4c6e0;
+  justify-content: space-around;
+}
+
+.logAdd_conatiner {
+  display: flex;
+  gap: 7.2rem;
+}
+
+.address_container {
+  padding-top: 1.2rem;
+  font-size: 1.8rem;
+}
+
+.logo {
+  width: 18rem;
+  height: 18rem;
+}
+
+.address_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.social_logos {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.icon {
+  height: 2.4rem;
+  width: 2.4rem;
+}

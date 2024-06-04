@@ -1,0 +1,51 @@
+<mat-toolbar class="navbar_container" (click)="drawer.toggle()">
+  <button mat-button class="btn">
+    <img src="../../assets/menu.svg" class="menu_logo" />
+  </button>
+  <button mat-button class="btn">
+    <img
+      src="../../assets/logo.png"
+      class="logo_img"
+      (click)="drawer.toggle()"
+    />
+  </button>
+  <button mat-button class="btn">
+    <img
+      src="../../assets/user.svg"
+      class="user_logo"
+      (click)="drawer.toggle()"
+      (click)="navigateToUpload()"
+    />
+  </button>
+</mat-toolbar>
+
+<mat-drawer-container class="drawer-container" autosize>
+  <mat-drawer
+    #drawer
+    class="drawer"
+    mode="side"
+    (click)="closeDrawerOnOutsideClick($event)"
+    (opened)="onDrawerOpened()"
+    (closed)="onDrawerClosed()"
+  >
+    <button mat-button class="icon_btn">
+      <mat-icon class="icon">account_circle</mat-icon
+      ><span class="span">LogIn/SignUp</span>
+    </button>
+    <button mat-button class="icon_btn">
+      <mat-icon class="icon">home</mat-icon><span class="span">Home</span>
+    </button>
+    <button mat-button class="icon_btn">
+      <mat-icon class="icon">grade</mat-icon><span class="span">Events</span>
+    </button>
+    <button mat-button class="icon_btn">
+      <mat-icon class="icon"> dialer_sip</mat-icon
+      ><span class="span">Contact us</span>
+    </button>
+  </mat-drawer>
+  <mat-drawer-content
+    (click)="drawer.toggle()"
+    (click)="closeDrawerOnOutsideClick($event)"
+  >
+  </mat-drawer-content>
+</mat-drawer-container>

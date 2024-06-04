@@ -1,0 +1,15 @@
+.No_Media {
+  display: inline-block;
+  padding: 25px;
+}
+.main_container {
+  display: none;
+}
+@media screen and (max-width: 450px) {
+  .No_Media {
+    display: none;
+  }
+  .main_container {
+    display: block;
+  }
+}

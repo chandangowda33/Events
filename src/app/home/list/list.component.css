@@ -1,0 +1,27 @@
+.list_container {
+  background-color: #0a0029;
+  color: #f696cd;
+  padding-top: 2.4rem;
+  margin-top: -0.3rem;
+}
+
+.choose {
+  padding-left: 1.2rem;
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  font-size: 3rem;
+}
+
+.event {
+  padding: 1.2rem 0 2.4rem 0.6rem;
+  display: flex;
+  overflow-x: auto;
+  gap: 1.2rem;
+}
+
+.event_img {
+  height: 24rem;
+  width: 12rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0.1rem 0.5rem 0.3rem #f4c6e0b0;
+}
