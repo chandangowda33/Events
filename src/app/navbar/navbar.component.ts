@@ -11,9 +11,12 @@ export class NavbarComponent {
   @ViewChild('drawer') drawer: any;
 
   constructor(private el: ElementRef, private route: Router) {}
-
   navigateToUpload() {
     this.route.navigate(['/upload']);
+  }
+
+  navigateToHome() {
+    this.route.navigate(['/home']);
   }
 
   onDrawerOpened() {

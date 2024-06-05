@@ -2,19 +2,18 @@
   <button mat-button class="btn">
     <img src="../../assets/menu.svg" class="menu_logo" />
   </button>
-  <button mat-button class="btn">
+  <button mat-button class="btn" (click)="navigateToHome()">
     <img
       src="../../assets/logo.png"
       class="logo_img"
       (click)="drawer.toggle()"
     />
   </button>
-  <button mat-button class="btn">
+  <button mat-button class="btn" (click)="navigateToUpload()">
     <img
       src="../../assets/user.svg"
       class="user_logo"
       (click)="drawer.toggle()"
-      (click)="navigateToUpload()"
     />
   </button>
 </mat-toolbar>

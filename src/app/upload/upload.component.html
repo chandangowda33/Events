@@ -1,1 +1,23 @@
-<p>upload works!</p>
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+  <label>
+    Event Name:
+    <input formControlName="eventName" type="text" />
+  </label>
+  <br />
+  <label>
+    Event Theme:
+    <input formControlName="eventTheme" type="text" />
+  </label>
+  <br />
+  <label>
+    Price:
+    <input formControlName="price" type="number" />
+  </label>
+  <br />
+  <label>
+    Images:
+    <input type="file" (change)="onFileSelected($event)" multiple />
+  </label>
+  <br />
+  <button type="submit">Submit</button>
+</form>
