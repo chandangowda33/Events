@@ -21,6 +21,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../environments/environments';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FileUploadService } from './file-upload.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireStorageModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [FileUploadService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

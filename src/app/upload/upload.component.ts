@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { FileUploadService } from '../file-upload.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload',
@@ -17,7 +19,9 @@ export class UploadComponent {
   constructor(
     private fb: FormBuilder,
     private storage: AngularFireStorage,
-    private http: HttpClient
+    private http: HttpClient,
+    private fileUpload: FileUploadService,
+    private route: Router
   ) {
     this.eventForm = this.fb.group({
       eventName: ['', Validators.required],
@@ -49,22 +53,29 @@ export class UploadComponent {
   }
 
   async onSubmit() {
-    this.downloadURLs = [];
+    // console.log('before upload' + this.downloadURLs);
     if (this.eventForm.valid) {
       for (const file of this.selectedFiles) {
+        // let i = 0;
         await this.uploadFile(file);
+        // .then(() => console.log(`${this.downloadURLs}+${i}`))
+        // .then(() => i++);
       }
-      const formData = {
+      // console.log('after upload' + this.downloadURLs);
+      let formData = new FormData();
+      // console.log(this.downloadURLs);
+
+      formData = {
         ...this.eventForm.value,
         images: this.downloadURLs,
       };
       console.log(formData);
 
-      // this.http
-      //   .post('https://your-mongodb-api-endpoint', formData)
-      //   .subscribe((response) => {
-      //     console.log('Data saved successfully', response);
-      //   });
+      this.fileUpload.uploadFile(formData).subscribe((response) => {
+        console.log('Data saved successfully', response);
+      });
+
+      // this.route.navigate(['/home']);
     }
   }
 }
