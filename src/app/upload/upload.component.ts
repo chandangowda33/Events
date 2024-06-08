@@ -13,8 +13,8 @@ import { Router } from '@angular/router';
 })
 export class UploadComponent {
   eventForm: FormGroup;
-  selectedFiles: File[] = [];
-  downloadURLs: string[] = [];
+  selectedFiles: FileList | null = null;
+  downloadUrls: string[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -30,52 +30,55 @@ export class UploadComponent {
     });
   }
 
-  onFileSelected(event: any) {
+  onFilesSelected(event: any) {
     this.selectedFiles = event.target.files;
   }
 
-  async uploadFile(file: File) {
-    const filePath = `events/${this.eventForm.get('eventName')?.value}_${
-      file.name
-    }`;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, file);
-    await task
-      .snapshotChanges()
-      .pipe(
-        finalize(() =>
-          fileRef.getDownloadURL().subscribe((url) => {
-            this.downloadURLs.push(url);
-          })
-        )
-      )
-      .toPromise();
+  onSubmit() {
+    if (
+      this.eventForm.valid &&
+      this.selectedFiles &&
+      this.selectedFiles.length > 0
+    ) {
+      this.uploadFiles();
+    }
   }
 
-  async onSubmit() {
-    // console.log('before upload' + this.downloadURLs);
-    if (this.eventForm.valid) {
-      for (const file of this.selectedFiles) {
-        // let i = 0;
-        await this.uploadFile(file);
-        // .then(() => console.log(`${this.downloadURLs}+${i}`))
-        // .then(() => i++);
+  private uploadFiles() {
+    const fileUploads = [];
+    for (let i = 0; i < this.selectedFiles!.length; i++) {
+      const file = this.selectedFiles!.item(i);
+      if (file) {
+        const filePath = `images/${file.name}`;
+        const fileRef = this.storage.ref(filePath);
+        const task = this.storage.upload(filePath, file);
+
+        const uploadTask = task
+          .snapshotChanges()
+          .pipe(
+            finalize(() => {
+              fileRef.getDownloadURL().subscribe((url) => {
+                this.downloadUrls.push(url);
+                if (this.downloadUrls.length === this.selectedFiles!.length) {
+                  this.submitEventDetails();
+                }
+              });
+            })
+          )
+          .subscribe();
+
+        fileUploads.push(uploadTask);
       }
-      // console.log('after upload' + this.downloadURLs);
-      let formData = new FormData();
-      // console.log(this.downloadURLs);
-
-      formData = {
-        ...this.eventForm.value,
-        images: this.downloadURLs,
-      };
-      console.log(formData);
-
-      this.fileUpload.uploadFile(formData).subscribe((response) => {
-        console.log('Data saved successfully', response);
-      });
-
-      // this.route.navigate(['/home']);
     }
+  }
+
+  private submitEventDetails() {
+    const eventDetails = {
+      ...this.eventForm.value,
+      eventImageUrls: this.downloadUrls,
+    };
+    this.fileUpload.uploadFile(eventDetails).subscribe((response) => {
+      console.log('Event saved successfully', response);
+    });
   }
 }

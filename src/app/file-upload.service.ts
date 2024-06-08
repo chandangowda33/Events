@@ -10,15 +10,18 @@ export class FileUploadService {
 
   constructor(private http: HttpClient) {}
 
-  uploadFile(formData: FormData): Observable<any> {
+  uploadFile(eventDetails: any): Observable<any> {
     console.log('in service');
-    console.log(formData);
+    console.log(eventDetails);
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
 
-    return this.http.post(this.uploadUrl, formData, { headers });
+    return this.http.post(
+      'http://127.0.0.1:3000/api/v1/upload/event',
+      eventDetails
+    );
   }
 
   // uploadFile(file: File): Observable<any> {
