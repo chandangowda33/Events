@@ -1,0 +1,59 @@
+.upload_form_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background: linear-gradient(to bottom, #fdb9e0, #6855ad);
+  height: 80vh;
+  text-align: center;
+  padding: 2.4rem;
+}
+
+.heading {
+  font-size: 3.6rem;
+  font-weight: 500;
+}
+
+.div_input {
+  display: flex;
+  gap: 0.1rem;
+  flex-direction: column;
+  justify-items: left;
+  align-items: flex-start;
+}
+
+.form {
+  display: flex;
+  gap: 1.2rem;
+  flex-direction: column;
+  justify-items: left;
+  align-items: flex-start;
+  padding-left: 7.2rem;
+}
+
+.label {
+  font-size: 1.8rem;
+  text-decoration: underline;
+}
+
+.input {
+  width: 150%;
+  height: 2.4rem;
+}
+
+.btn:active,
+.btn,
+.btn:visited,
+.btn:hover {
+  padding: 1.2rem 2.4rem;
+  background-color: #fdb9e0;
+  color: #050018;
+  font-size: 1.8rem;
+  font-weight: 500;
+  border-radius: 2.4rem;
+  border: none;
+  margin-left: 7.2rem;
+}
+
+.ext-top-margin {
+  margin-top: 0.6rem;
+}

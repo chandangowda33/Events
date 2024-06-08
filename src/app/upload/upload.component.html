@@ -1,24 +1,28 @@
-<form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="eventName">Event Name</label>
-    <input id="eventName" formControlName="eventName" />
-  </div>
-  <div>
-    <label for="eventTheme">Event Theme</label>
-    <input id="eventTheme" formControlName="eventTheme" />
-  </div>
-  <div>
-    <label for="price">Price</label>
-    <input id="price" formControlName="price" type="number" />
-  </div>
-  <div>
-    <label for="eventImages">Event Images</label>
-    <input
-      id="eventImages"
-      type="file"
-      (change)="onFilesSelected($event)"
-      multiple
-    />
-  </div>
-  <button type="submit">Submit</button>
-</form>
+<div class="upload_form_container">
+  <h3 class="heading">Enter Event Details</h3>
+  <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="div_input">
+      <label class="label" for="eventName">Event Name:</label>
+      <input class="input" id="eventName" formControlName="eventName" />
+    </div>
+    <div class="div_input">
+      <label class="label" for="eventTheme">Event Theme:</label>
+      <input class="input" id="eventTheme" formControlName="eventTheme" />
+    </div>
+    <div class="div_input">
+      <label class="label" for="price">Price:</label>
+      <input class="input" id="price" formControlName="price" type="number" />
+    </div>
+    <div class="div_input">
+      <label for="eventImages" class="label">Event Images:</label>
+      <input
+        class="input ext-top-margin"
+        id="eventImages"
+        type="file"
+        (change)="onFilesSelected($event)"
+        multiple
+      />
+    </div>
+    <button type="submit" class="btn">Submit</button>
+  </form>
+</div>
