@@ -49,7 +49,12 @@ export class UploadComponent {
     for (let i = 0; i < this.selectedFiles!.length; i++) {
       const file = this.selectedFiles!.item(i);
       if (file) {
-        const filePath = `images/${file.name}`;
+        const filePath = `dreamEvents/${
+          this.eventForm.get('eventName')?.value +
+          this.eventForm.get('eventTheme')?.value +
+          this.eventForm.get('price')?.value +
+          Date()
+        }`;
         const fileRef = this.storage.ref(filePath);
         const task = this.storage.upload(filePath, file);
 
