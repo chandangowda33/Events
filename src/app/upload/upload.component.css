@@ -3,9 +3,17 @@
   flex-direction: column;
   gap: 1.2rem;
   background: linear-gradient(to bottom, #fdb9e0, #6855ad);
-  height: 80vh;
+  height: 97vh;
   text-align: center;
   padding: 2.4rem;
+}
+
+.image_selection_div {
+  display: flex;
+  text-align: center;
+  justify-items: center;
+  gap: 0.3rem;
+  flex-direction: column;
 }
 
 .heading {
@@ -32,7 +40,8 @@
 
 .label {
   font-size: 1.8rem;
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  color: #050018;
 }
 
 .input {
@@ -51,9 +60,14 @@
   font-weight: 500;
   border-radius: 2.4rem;
   border: none;
-  margin-left: 7.2rem;
+  /* margin-left: 6rem; */
 }
 
 .ext-top-margin {
   margin-top: 0.6rem;
+}
+
+.image_sel {
+  margin-left: 30%;
+  margin-bottom: 1.8rem;
 }

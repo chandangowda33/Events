@@ -6,15 +6,32 @@ import { HttpClient } from '@angular/common/http';
 import { FileUploadService } from '../file-upload.service';
 import { Router } from '@angular/router';
 
+interface Events {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.css'],
 })
 export class UploadComponent {
-  eventForm: FormGroup;
+  // eventForm: FormGroup;
   selectedFiles: FileList | null = null;
   downloadUrls: string[] = [];
+  eventsArray: Events[] = [
+    { value: 'marriage', viewValue: 'Marriage' },
+    { value: 'birthday', viewValue: 'Birthday' },
+    { value: 'engagement', viewValue: 'Engagement' },
+    { value: 'naming ceremony', viewValue: 'Naming Ceremony' },
+    { value: 'house welcoming', viewValue: 'House Welcoming' },
+    { value: 'baby shower', viewValue: 'Baby Shower' },
+    { value: 'other', viewValue: 'Other' },
+  ];
+  selectedEvent!: string;
+  selectedPrice!: string;
+  selectedTheme!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -23,11 +40,11 @@ export class UploadComponent {
     private fileUpload: FileUploadService,
     private route: Router
   ) {
-    this.eventForm = this.fb.group({
-      eventName: ['', Validators.required],
-      eventTheme: ['', Validators.required],
-      price: ['', Validators.required],
-    });
+    // this.eventForm = this.fb.group({
+    //   eventName: ['', Validators.required],
+    //   eventTheme: ['', Validators.required],
+    //   price: ['', Validators.required],
+    // });
   }
 
   onFilesSelected(event: any) {
@@ -36,7 +53,7 @@ export class UploadComponent {
 
   onSubmit() {
     if (
-      this.eventForm.valid &&
+      // this.eventForm.valid &&
       this.selectedFiles &&
       this.selectedFiles.length > 0
     ) {
@@ -50,10 +67,7 @@ export class UploadComponent {
       const file = this.selectedFiles!.item(i);
       if (file) {
         const filePath = `dreamEvents/${
-          this.eventForm.get('eventName')?.value +
-          this.eventForm.get('eventTheme')?.value +
-          this.eventForm.get('price')?.value +
-          Date()
+          this.selectedEvent + this.selectedTheme + this.selectedPrice + Date()
         }`;
         const fileRef = this.storage.ref(filePath);
         const task = this.storage.upload(filePath, file);
@@ -79,7 +93,9 @@ export class UploadComponent {
 
   private submitEventDetails() {
     const eventDetails = {
-      ...this.eventForm.value,
+      eventName: this.selectedEvent,
+      eventTheme: this.selectedTheme,
+      eventPrice: this.selectedPrice,
       eventImageUrls: this.downloadUrls,
     };
     this.fileUpload.uploadFile(eventDetails).subscribe((response) => {

@@ -1,22 +1,37 @@
 <div class="upload_form_container">
   <h3 class="heading">Enter Event Details</h3>
-  <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" class="form">
-    <div class="div_input">
-      <label class="label" for="eventName">Event Name:</label>
-      <input class="input" id="eventName" formControlName="eventName" />
-    </div>
-    <div class="div_input">
-      <label class="label" for="eventTheme">Event Theme:</label>
-      <input class="input" id="eventTheme" formControlName="eventTheme" />
-    </div>
-    <div class="div_input">
-      <label class="label" for="price">Price:</label>
-      <input class="input" id="price" formControlName="price" type="number" />
-    </div>
-    <div class="div_input">
+  <form (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label class="label">Choose an Event</mat-label>
+      <mat-select [(ngModel)]="selectedEvent" name="event">
+        <mat-option *ngFor="let event of eventsArray" [value]="event.value">
+          {{ event.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label class="label">Event Theme:</mat-label>
+      <input
+        matInput
+        placeholder="Ex. Doremon"
+        [(ngModel)]="selectedTheme"
+        name="theme"
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label class="label">Event Price:</mat-label>
+      <input
+        matInput
+        placeholder="Ex. 1200"
+        [(ngModel)]="selectedPrice"
+        name="price"
+      />
+    </mat-form-field>
+    <div class="image_selection_div">
       <label for="eventImages" class="label">Event Images:</label>
       <input
-        class="input ext-top-margin"
+        class="image_sel"
         id="eventImages"
         type="file"
         (change)="onFilesSelected($event)"

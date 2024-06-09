@@ -22,6 +22,9 @@ import { environment } from '../environments/environments';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FileUploadService } from './file-upload.service';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,9 @@ import { FileUploadService } from './file-upload.service';
     ReactiveFormsModule,
     AngularFireStorageModule,
     HttpClientModule,
+    MatSelectModule,
+    FormsModule,
+    MatInputModule,
   ],
   providers: [FileUploadService],
   bootstrap: [AppComponent],
