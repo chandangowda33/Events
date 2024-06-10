@@ -51,6 +51,11 @@ export class UploadComponent {
     this.selectedFiles = event.target.files;
   }
 
+  onSubmitTouch(event: TouchEvent): void {
+    event.preventDefault(); // Prevent the default form submission
+    this.onSubmit();
+  }
+
   onSubmit() {
     if (
       // this.eventForm.valid &&

@@ -38,6 +38,8 @@
         multiple
       />
     </div>
-    <button type="submit" class="btn">Submit</button>
+    <button type="submit" (touchstart)="onSubmitTouch($event)" class="btn">
+      Submit
+    </button>
   </form>
 </div>
