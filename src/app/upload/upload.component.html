@@ -1,6 +1,6 @@
 <div class="upload_form_container">
   <h3 class="heading">Enter Event Details</h3>
-  <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()" (submit)="onSubmit()">
     <mat-form-field>
       <mat-label class="label">Choose an Event</mat-label>
       <mat-select [(ngModel)]="selectedEvent" name="event">
