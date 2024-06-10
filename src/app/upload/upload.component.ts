@@ -57,6 +57,7 @@ export class UploadComponent {
   }
 
   onSubmit() {
+    alert('yes');
     if (
       // this.eventForm.valid &&
       this.selectedFiles &&
