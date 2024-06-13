@@ -53,21 +53,30 @@ export class UploadComponent {
 
   onSubmitTouch(event: TouchEvent): void {
     event.preventDefault(); // Prevent the default form submission
+
     this.onSubmit();
+    this.alertO();
+    this.route.navigate(['/home']);
+  }
+
+  alertO() {
+    alert('OOOO');
   }
 
   onSubmit() {
-    alert('yes');
+    alert('in OnSubmiy');
     if (
       // this.eventForm.valid &&
       this.selectedFiles &&
       this.selectedFiles.length > 0
     ) {
+      alert('in if');
       this.uploadFiles();
     }
   }
 
   private uploadFiles() {
+    alert('in upload files');
     const fileUploads = [];
     for (let i = 0; i < this.selectedFiles!.length; i++) {
       const file = this.selectedFiles!.item(i);
@@ -82,10 +91,12 @@ export class UploadComponent {
           .snapshotChanges()
           .pipe(
             finalize(() => {
+              alert('in final');
               fileRef.getDownloadURL().subscribe((url) => {
                 this.downloadUrls.push(url);
                 if (this.downloadUrls.length === this.selectedFiles!.length) {
                   this.submitEventDetails();
+                  alert(this.downloadUrls.length);
                 }
               });
             })
@@ -98,14 +109,20 @@ export class UploadComponent {
   }
 
   private submitEventDetails() {
+    alert('in submit');
     const eventDetails = {
       eventName: this.selectedEvent,
       eventTheme: this.selectedTheme,
       eventPrice: this.selectedPrice,
       eventImageUrls: this.downloadUrls,
     };
-    this.fileUpload.uploadFile(eventDetails).subscribe((response) => {
-      console.log('Event saved successfully', response);
-    });
+    try {
+      this.fileUpload.uploadFile(eventDetails).subscribe((response) => {
+        alert('got back response');
+        console.log('Event saved successfully', response);
+      });
+    } catch (err) {
+      alert('error');
+    }
   }
 }
