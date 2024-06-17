@@ -1,9 +1,13 @@
 <div class="list_container">
   <h3 class="choose">Choose Event</h3>
   <div class="event">
-    <img src="../../../assets/marriage_pic.png" class="event_img" />
-    <img src="../../../assets/Birthday.png" class="event_img" />
-    <img src="../../../assets/BS.png" class="event_img" />
-    <img src="../../../assets/SC.png" class="event_img" />
+    <img
+      src="../../../assets/marriage_pic.png"
+      class="event_img"
+      (click)="getEvent('marriage')"
+    />
+    <img src="../../../assets/Birthday.png" class="event_img" (click)="getEvent('birthday')" />
+    <img src="../../../assets/BS.png" class="event_img" (click)="getEvent('baby shower')" />
+    <img src="../../../assets/SC.png" class="event_img" (click)="getEvent('special occasion')" />
   </div>
 </div>

@@ -7,17 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class FileUploadService {
   private uploadUrl =
-    'https://eventbackend-2vxm.onrender.com/api/v1/upload/event';
+    'https://eventbackend-2vxm.onrender.com/api/v1/event/upload';
 
   constructor(private http: HttpClient) {}
 
   uploadFile(eventDetails: any): Observable<any> {
-    alert('in service');
     console.log(eventDetails);
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
 
     return this.http.post(this.uploadUrl, eventDetails);
   }

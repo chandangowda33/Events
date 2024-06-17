@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 1.2rem;
   background: linear-gradient(to bottom, #fdb9e0, #6855ad);
-  height: 97vh;
+  /* height: 97vh; */
   text-align: center;
   padding: 2.4rem;
 }
@@ -70,4 +70,13 @@
 .image_sel {
   margin-left: 30%;
   margin-bottom: 1.8rem;
+}
+
+.upload_gif {
+  width: 2.4rem;
+  height: 3.6rem;
+}
+
+.btn:disabled {
+  background-color: #f7d3e742;
 }

@@ -1,14 +1,25 @@
 <div class="upload_form_container">
+  <div class="upload_div" *ngIf="uploading">
+    <img src="../../assets/Upload.gif" class="upload_gif" />
+    <p>Please wait, your event is getting uploaded</p>
+  </div>
+  <!---->
+  <app-success-tab
+    *ngIf="response && response.status === 'Success'"
+    [message]="response.message"
+    (close)="closeTab()"
+  ></app-success-tab>
   <h3 class="heading">Enter Event Details</h3>
-  <form (ngSubmit)="onSubmit()" (submit)="onSubmit()">
+  <form #myForm="ngForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label class="label">Choose an Event</mat-label>
-      <mat-select [(ngModel)]="selectedEvent" name="event">
+      <mat-select [(ngModel)]="selectedEvent" name="event" required>
         <mat-option *ngFor="let event of eventsArray" [value]="event.value">
           {{ event.viewValue }}
         </mat-option>
       </mat-select>
     </mat-form-field>
+
     <mat-form-field>
       <mat-label class="label">Event Theme:</mat-label>
       <input
@@ -16,6 +27,18 @@
         placeholder="Ex. Doremon"
         [(ngModel)]="selectedTheme"
         name="theme"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label class="label">Items:</mat-label>
+      <input
+        matInput
+        placeholder="Baloons, flowers "
+        [(ngModel)]="selectedItems"
+        name="items"
+        required
       />
     </mat-form-field>
 
@@ -26,8 +49,10 @@
         placeholder="Ex. 1200"
         [(ngModel)]="selectedPrice"
         name="price"
+        required
       />
     </mat-form-field>
+
     <div class="image_selection_div">
       <label for="eventImages" class="label">Event Images:</label>
       <input
@@ -36,9 +61,11 @@
         type="file"
         (change)="onFilesSelected($event)"
         multiple
+        required
       />
     </div>
-    <button type="submit" (touchstart)="onSubmitTouch($event)" class="btn">
+
+    <button type="submit" [disabled]="myForm.invalid" class="btn">
       Submit
     </button>
   </form>

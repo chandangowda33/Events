@@ -25,6 +25,9 @@ import { FileUploadService } from './file-upload.service';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { SuccessTabComponent } from './success-tab/success-tab.component';
+import { ErrorTabComponent } from './error-tab/error-tab.component';
+import { EventComponent } from './event/event.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { MatInputModule } from '@angular/material/input';
     TrustComponent,
     VideoComponent,
     HowToBookComponent,
+    SuccessTabComponent,
+    ErrorTabComponent,
+    EventComponent,
   ],
   imports: [
     BrowserModule,

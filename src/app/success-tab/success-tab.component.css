@@ -1,0 +1,31 @@
+.success_div {
+  background-color: white;
+  color: green;
+
+  border-radius: 1.8rem;
+  border: 0.3rem solid green;
+  position: relative;
+  padding-top: 0.9rem;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 1.2rem; */
+  gap: 0.6rem;
+  font-size: 1.8rem;
+}
+
+.btn {
+  position: absolute;
+  top: -0.6rem;
+  left: -1.2rem;
+}
+
+.close-icon {
+  color: red;
+  font-size: 1.8rem;
+  height: 1.8rem;
+  width: 1.8rem;
+}

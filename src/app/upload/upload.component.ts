@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
 import { FileUploadService } from '../file-upload.service';
-import { Router } from '@angular/router';
 
 interface Events {
   value: string;
@@ -29,54 +26,40 @@ export class UploadComponent {
     { value: 'baby shower', viewValue: 'Baby Shower' },
     { value: 'other', viewValue: 'Other' },
   ];
-  selectedEvent!: string;
-  selectedPrice!: string;
-  selectedTheme!: string;
+  selectedEvent: any = null;
+  selectedPrice: any = null;
+  selectedTheme: any = null;
+  response: any;
+  selectedItems: any = null;
+  uploading: boolean = false;
+  items: string[] = [];
 
   constructor(
-    private fb: FormBuilder,
     private storage: AngularFireStorage,
-    private http: HttpClient,
-    private fileUpload: FileUploadService,
-    private route: Router
-  ) {
-    // this.eventForm = this.fb.group({
-    //   eventName: ['', Validators.required],
-    //   eventTheme: ['', Validators.required],
-    //   price: ['', Validators.required],
-    // });
-  }
+    private fileUpload: FileUploadService
+  ) {}
 
   onFilesSelected(event: any) {
     this.selectedFiles = event.target.files;
   }
 
-  onSubmitTouch(event: TouchEvent): void {
-    event.preventDefault(); // Prevent the default form submission
-
-    this.onSubmit();
-    this.alertO();
-    this.route.navigate(['/home']);
-  }
-
-  alertO() {
-    alert('OOOO');
-  }
-
   onSubmit() {
-    alert('in OnSubmiy');
+    this.uploading = true;
     if (
       // this.eventForm.valid &&
       this.selectedFiles &&
       this.selectedFiles.length > 0
     ) {
-      alert('in if');
+      this.items = this.selectedItems.split(',');
       this.uploadFiles();
     }
   }
 
+  closeTab() {
+    this.response = null;
+  }
+
   private uploadFiles() {
-    alert('in upload files');
     const fileUploads = [];
     for (let i = 0; i < this.selectedFiles!.length; i++) {
       const file = this.selectedFiles!.item(i);
@@ -91,12 +74,10 @@ export class UploadComponent {
           .snapshotChanges()
           .pipe(
             finalize(() => {
-              alert('in final');
               fileRef.getDownloadURL().subscribe((url) => {
                 this.downloadUrls.push(url);
                 if (this.downloadUrls.length === this.selectedFiles!.length) {
                   this.submitEventDetails();
-                  alert(this.downloadUrls.length);
                 }
               });
             })
@@ -109,20 +90,25 @@ export class UploadComponent {
   }
 
   private submitEventDetails() {
-    alert('in submit');
     const eventDetails = {
       eventName: this.selectedEvent,
       eventTheme: this.selectedTheme,
+      eventItems: this.items,
       eventPrice: this.selectedPrice,
       eventImageUrls: this.downloadUrls,
     };
-    try {
-      this.fileUpload.uploadFile(eventDetails).subscribe((response) => {
-        alert('got back response');
-        console.log('Event saved successfully', response);
-      });
-    } catch (err) {
-      alert('error');
-    }
+
+    this.fileUpload.uploadFile(eventDetails).subscribe((response) => {
+      this.uploading = false;
+      this.response = response;
+      console.log(this.response);
+      this.selectedEvent =
+        this.selectedTheme =
+        this.selectedPrice =
+        this.selectedItems =
+          '';
+      this.items = [];
+      this.selectedFiles = null;
+    });
   }
 }
