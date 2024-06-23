@@ -1,0 +1,35 @@
+.images_div {
+  position: relative;
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: hidden;
+}
+
+.heading {
+  font-family: "Playwrite PL", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3.6rem;
+  text-align: center;
+  margin: 0 0 2.4rem 0;
+}
+
+.centerImg {
+  width: 50%;
+  height: 60vh;
+}
+
+.dummyImgLeft {
+  width: 25%;
+  margin-left: -12.5%;
+  opacity: 0.5;
+  padding: 2.4rem 0;
+}
+
+.dummyImgRght {
+  width: 25%;
+  margin-right: -12.5%;
+  opacity: 0.5;
+  padding: 2.4rem 0;
+}

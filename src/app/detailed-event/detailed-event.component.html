@@ -1,0 +1,39 @@
+<div class="event_div" *ngIf="eventDetails">
+  <h1 class="heading">{{ eventDetails.eventTheme }}</h1>
+  <div class="images_div" *ngIf="eventDetails">
+    <img
+      src="{{ eventDetails.eventImageUrls[count - 1] }}"
+      alt="Event Image 1"
+      class="dummyImgLeft"
+      *ngIf="count"
+    />
+    <img
+      src="{{ eventDetails.eventImageUrls[imageNumbers] }}"
+      alt="Event Image 2"
+      class="dummyImgLeft"
+      *ngIf="count === 0"
+    />
+
+    <img
+      src="{{ eventDetails.eventImageUrls[count] }}"
+      class="centerImg"
+      alt="Event Image 3"
+    />
+
+    <img
+      src="{{ eventDetails.eventImageUrls[count + 1] }}"
+      alt="Event Imag 4"
+      class="dummyImgRght"
+      *ngIf="count < imageNumbers"
+    />
+    <img
+      src="{{ eventDetails.eventImageUrls[0] }}"
+      alt="Event Image 5"
+      class="dummyImgRght"
+      *ngIf="count === imageNumbers"
+    />
+  </div>
+  <button class="navBtn right" (click)="imagesView('right')"></button>
+  <button class="navBtn left" (click)="imagesView('left')"></button>
+  <span class="info">{{ count + 1 }}/{{ imageNumbers + 1 }}</span>
+</div>

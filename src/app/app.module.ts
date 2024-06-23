@@ -28,6 +28,8 @@ import { MatInputModule } from '@angular/material/input';
 import { SuccessTabComponent } from './success-tab/success-tab.component';
 import { ErrorTabComponent } from './error-tab/error-tab.component';
 import { EventComponent } from './event/event.component';
+import { LoadingComponent } from './loading/loading.component';
+import { DetailedEventComponent } from './detailed-event/detailed-event.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { EventComponent } from './event/event.component';
     SuccessTabComponent,
     ErrorTabComponent,
     EventComponent,
+    LoadingComponent,
+    DetailedEventComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { GetEventService } from 'src/app/get-event.service';
 
 @Component({
@@ -7,11 +8,13 @@ import { GetEventService } from 'src/app/get-event.service';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent {
-  constructor(private getEventService: GetEventService) {}
+  constructor(
+    private getEventService: GetEventService,
+    private route: Router
+  ) {}
 
   getEvent(eventName: string) {
-    this.getEventService.getEvent(eventName).subscribe((eventDetails: any) => {
-      console.log(eventDetails);
-    });
+    this.getEventService.setEventName(eventName);
+    this.route.navigate(['/eventTheme']);
   }
 }

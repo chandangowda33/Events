@@ -1,0 +1,84 @@
+.loading {
+  text-align: center;
+  height: 100vh;
+}
+
+.heading {
+  font-family: "Playwrite PL", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3.6rem;
+  text-align: center;
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1.2rem;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-items: center;
+}
+
+.event-image {
+  width: 40vw;
+  height: 60vw;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 8px 4px #a48af5;
+  margin-bottom: 1.2rem;
+}
+
+.theme {
+  font-size: 1.8rem;
+  /* font-weight: 500; */
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rupee_icon {
+  height: 1.8rem;
+  width: 1.8rem;
+}
+
+.price_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.little {
+  font-size: 0.9rem;
+}
+
+.strong {
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.theme {
+  margin-bottom: 0 !important;
+}
+
+.btn {
+  margin-top: 1.2rem;
+  background-color: #4306fa;
+  color: #fc78c2;
+  font-size: 1.8rem;
+  padding: 1.2rem;
+  border-radius: 2.4rem;
+  border: none;
+  font-weight: 700;
+}

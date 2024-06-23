@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { finalize } from 'rxjs/operators';
+import { finalize, timestamp } from 'rxjs/operators';
 import { FileUploadService } from '../file-upload.service';
 
 interface Events {
@@ -65,7 +65,10 @@ export class UploadComponent {
       const file = this.selectedFiles!.item(i);
       if (file) {
         const filePath = `dreamEvents/${
-          this.selectedEvent + this.selectedTheme + this.selectedPrice + Date()
+          this.selectedEvent +
+          this.selectedTheme +
+          Date() +
+          (Math.random() * (1000 - 10) + 10)
         }`;
         const fileRef = this.storage.ref(filePath);
         const task = this.storage.upload(filePath, file);
@@ -75,8 +78,11 @@ export class UploadComponent {
           .pipe(
             finalize(() => {
               fileRef.getDownloadURL().subscribe((url) => {
+                console.log(url);
                 this.downloadUrls.push(url);
                 if (this.downloadUrls.length === this.selectedFiles!.length) {
+                  console.log(this.downloadUrls);
+
                   this.submitEventDetails();
                 }
               });

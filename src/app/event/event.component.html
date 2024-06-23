@@ -1,1 +1,30 @@
-<p>event works!</p>
+<div class="eventTheme_div" *ngIf="eventDetails && eventResponse === 'success'">
+  <h2 class="heading">{{ eventName }}</h2>
+  <div class="grid">
+    <div *ngFor="let event of eventDetails" class="event-card">
+      <img
+        [src]="event.eventImageUrls"
+        alt="{{ event.eventName }}"
+        class="event-image"
+      />
+      <p class="theme">
+        <strong class="strong">{{ event.eventTheme }}</strong> Theme
+      </p>
+      <div class="price_div">
+        <span class="little">Starting from:</span>
+        <div class="price">
+          <img src="../../assets/Rupee.png" class="rupee_icon" />
+          <strong class="strong">{{ event.eventPrice }}</strong
+          >/-
+        </div>
+      </div>
+      <button class="btn" (click)="gotoEvent(event._id)">Know More</button>
+    </div>
+  </div>
+</div>
+
+<app-loading class="loading" *ngIf="!eventDetails"></app-loading>
+
+<app-error-tab
+  *ngIf="eventDetails && eventDetails.status === 'failed'"
+></app-error-tab>
