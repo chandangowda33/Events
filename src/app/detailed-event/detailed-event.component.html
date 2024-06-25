@@ -2,7 +2,7 @@
   <h1 class="heading">{{ eventDetails.eventTheme }}</h1>
   <div class="images_div" *ngIf="eventDetails">
     <img
-      src="{{ eventDetails.eventImageUrls[count - 1] }}"
+      src="{{ eventDetails.eventImageUrls[previous] }}"
       alt="Event Image 1"
       class="dummyImgLeft"
       *ngIf="count"
@@ -21,7 +21,7 @@
     />
 
     <img
-      src="{{ eventDetails.eventImageUrls[count + 1] }}"
+      src="{{ eventDetails.eventImageUrls[next] }}"
       alt="Event Imag 4"
       class="dummyImgRght"
       *ngIf="count < imageNumbers"
@@ -32,8 +32,48 @@
       class="dummyImgRght"
       *ngIf="count === imageNumbers"
     />
+    <button class="navBtn right" (click)="imagesView('right')">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+    <button class="navBtn left" (click)="imagesView('left')">
+      <mat-icon>navigate_before</mat-icon>
+    </button>
   </div>
-  <button class="navBtn right" (click)="imagesView('right')"></button>
-  <button class="navBtn left" (click)="imagesView('left')"></button>
-  <span class="info">{{ count + 1 }}/{{ imageNumbers + 1 }}</span>
+  <p class="info">{{ count + 1 }}/{{ imageNumbers + 1 }}</p>
+  <p class="info marTop">Starting from just</p>
+  <div class="price">
+    <img src="../../assets/Rupee.png" class="rupee_icon" />
+    <strong class="strong">{{ eventDetails.eventPrice }}/-</strong>
+  </div>
+  <p class="info">
+    Prics is totally negotiable and depends on your requirements
+  </p>
+  <div class="event_items" *ngIf="eventDetails.eventItems">
+    <h6 class="item_heading">Main items of this event:</h6>
+    <div class="grid">
+      <div class="items_div" *ngFor="let item of eventDetails.eventItems">
+        <p class="items">{{ item }}</p>
+      </div>
+    </div>
+  </div>
+  <button
+    class="btn"
+    (click)="sendMessage(eventDetails.eventName, eventDetails.eventTheme)"
+  >
+    Contact Us
+    <!-- <img class='whatsAppSVG' src="../../assets/whatsapp.svg" /> -->
+  </button>
+  <button class="zoomIcon zoomIn" (click)="zoomImg(true)">
+    <mat-icon>zoom_in</mat-icon>
+  </button>
+  <div class="zoomedImg_div" *ngIf="zoom">
+    <img
+      src="{{ eventDetails.eventImageUrls[count] }}"
+      class="zoomedImg"
+      alt="Event Image 3"
+    />
+    <button class="zoomIcon zoomOut" (click)="zoomImg(false)">
+      <mat-icon>zoom_in</mat-icon>
+    </button>
+  </div>
 </div>
