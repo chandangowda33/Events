@@ -4,12 +4,40 @@
   gap: 1.2rem;
   overflow-x: hidden;
 }
+
 .navBtn {
   position: absolute;
   padding: 1.2rem;
   border: none;
   border-radius: 50%;
   top: 45%;
+}
+
+.centerImg {
+  width: 75%;
+  height: 60vh;
+  border-radius: 1.2rem;
+}
+
+.zoomIn {
+  margin: 1.2rem 47% 0 47%;
+
+  background: none;
+  border: none;
+}
+
+.zoomedImg_div {
+  margin: 3.6rem 0 1.2rem 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  gap: 1.2rem;
+}
+
+.zoomedImg {
+  height: 27rem;
+  width: 36rem;
 }
 
 .heading {
@@ -21,19 +49,6 @@
   text-align: center;
   margin: 0 0 2.4rem 0;
   font-weight: 700;
-}
-
-.centerImg {
-  width: 75%;
-  height: 60vh;
-  border-radius: 1.2rem;
-  position: relative;
-}
-
-.zoomIn {
-  position: absolute;
-  bottom: 2%;
-  right: 2%;
 }
 
 .dummyImgLeft {
@@ -62,12 +77,10 @@
 
 .info {
   text-align: center;
-  margin-top: 0.6rem;
 }
 
 .marTop {
-  margin-top: 1.8rem;
-  margin-bottom: 0 !important;
+  margin-top: 1.2rem;
 }
 
 .price {
@@ -77,8 +90,8 @@
 }
 
 .rupee_icon {
-  height: 1.8rem;
-  width: 1.8rem;
+  height: 2.7rem;
+  width: 1.5rem;
   padding-bottom: 0.9rem;
 }
 
@@ -92,6 +105,7 @@
 .strong {
   font-weight: 700;
   font-size: 3.6rem;
+  margin-bottom: 0.6rem;
 }
 
 .event_items {
@@ -133,25 +147,19 @@
 }
 
 .zoomIcon {
-  height: 1.8rem;
-  width: 1.8rem;
-}
-
-.body {
-  position: relative;
-}
-
-.zoomedImg {
-  position: absolute;
-  height: 70vw;
-  width: 80vw;
-  padding-left: 10vw;
+  height: 2.4rem !important;
+  width: 2.4rem !important;
+  font-size: 2.4rem;
 }
 
 .zoomOut {
-  background-color: aliceblue;
-  height: 2.4rem;
-  width: 2.4rem;
+  padding: 0.3rem 1.2rem;
+
+  background-color: #0a0029;
+  color: rgb(250, 123, 201);
+  font-size: 1.8rem;
+  border: none;
+  border-radius: 1.2rem;
 }
 
 @media screen and (max-width: 415px) {

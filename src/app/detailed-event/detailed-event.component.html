@@ -1,6 +1,14 @@
 <div class="event_div" *ngIf="eventDetails">
   <h1 class="heading">{{ eventDetails.eventTheme }}</h1>
-  <div class="images_div" *ngIf="eventDetails">
+  <div class="zoomedImg_div" *ngIf="zoom">
+    <img
+      src="{{ eventDetails.eventImageUrls[count] }}"
+      class="zoomedImg"
+      alt="Event Image 3"
+    />
+    <button class="zoomOut" (click)="zoomImg(false)">Close</button>
+  </div>
+  <div class="images_div" *ngIf="!zoom">
     <img
       src="{{ eventDetails.eventImageUrls[previous] }}"
       alt="Event Image 1"
@@ -39,6 +47,9 @@
       <mat-icon>navigate_before</mat-icon>
     </button>
   </div>
+  <button class="zoomIn" *ngIf="!zoom" (click)="zoomImg(true)">
+    <mat-icon class="zoomIcon">zoom_in</mat-icon>
+  </button>
   <p class="info">{{ count + 1 }}/{{ imageNumbers + 1 }}</p>
   <p class="info marTop">Starting from just</p>
   <div class="price">
@@ -63,17 +74,4 @@
     Contact Us
     <!-- <img class='whatsAppSVG' src="../../assets/whatsapp.svg" /> -->
   </button>
-  <button class="zoomIcon zoomIn" (click)="zoomImg(true)">
-    <mat-icon>zoom_in</mat-icon>
-  </button>
-  <div class="zoomedImg_div" *ngIf="zoom">
-    <img
-      src="{{ eventDetails.eventImageUrls[count] }}"
-      class="zoomedImg"
-      alt="Event Image 3"
-    />
-    <button class="zoomIcon zoomOut" (click)="zoomImg(false)">
-      <mat-icon>zoom_in</mat-icon>
-    </button>
-  </div>
 </div>

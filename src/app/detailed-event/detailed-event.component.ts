@@ -15,7 +15,7 @@ export class DetailedEventComponent implements OnInit {
   previous: number = -1;
   next: number = +1;
   imageNumbers: number = 0;
-  zoom:boolean=false
+  zoom: boolean = false;
 
   ngOnInit(): void {
     this.getEvent.getEventByID().subscribe((eventResponse: any) => {
@@ -60,8 +60,12 @@ export class DetailedEventComponent implements OnInit {
     window.location.href = url;
   }
 
-  zoomImg(zoom:boolean){
-    this.zoom=zoom;
+  zoomImg(zoom: boolean) {
+    this.zoom = zoom;
+    // if (zoom) {
+    //   document.body.style.overflow = 'hidden';
+    // } else {
+    //   document.body.style.overflow = 'auto';
+    // }
   }
-
 }
